@@ -1,10 +1,8 @@
-@mixin centrado {
-    display: flex;
+@mixin text-align {
+    display: flex; 
     flex-direction: column;
-    justify-content: space-evenly;
-}
-
-@mixin buttons {
-    width: 70px;
-    background-color: blueviolet;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }

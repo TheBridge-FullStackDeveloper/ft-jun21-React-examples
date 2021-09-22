@@ -68,47 +68,40 @@ export class ProductList extends Component {
         <h3>Bienvenido, añade algo</h3>
 
         return (
-            <>
-
-                <input type="text" ref={this.texto}/>
-                <button onClick={this.leerDato}>Pulsa y lee</button>
-
-                <form onSubmit={this.addProduct}>
+            <div className="product-list">
+                <h1>Añadir producto</h1>
+                <form onSubmit={this.addProduct} className="product-list-form">
+                    
                     <label>
                     Nombre:
-                    <input type="text" name="name" onChange={this.handleChange} />
                     </label>
-                    <br/>
+                    <input type="text" name="name" onChange={this.handleChange} />
+                    
                     <label>
                     Descripción:
+                    </label>
                     <input type="text" name="desc"/>
-                    </label><br/>
+                    
                     <label>
                     Precio:
+                    </label>
                     <input type="number" name="price"/>
-                    </label><br/>
+                   
                     <label>
                     URL img:
+                    </label>
                     <input type="url" name="url" ref={this.url}/>
-                    </label><br/>
+                    
                     <input type="submit" value="Submit" />
                 </form>
 
-                <section>
-                    <h1>Añadir producto</h1>
-                    <button onClick={this.addProduct}>Añadir producto</button>
-                    <button onClick={this.removeAllProducts}>Borrar todo</button>
-                    {message}
-                </section>
-
-                <section>
+                <section className="product-list--list">
                     <h1>Lista de productos</h1> 
-                    <article>
+                    <article className="product-list--article">
                         {this.paintProducts()}
                     </article>
                 </section>
-                
-            </>
+            </div>
         )
     }
 }

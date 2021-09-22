@@ -1,0 +1,17 @@
+@import '../utils/mixins';
+
+
+.product-list {
+    @include text-align;
+    &-form{
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+    &--article{
+        display: flex;
+    }
+}

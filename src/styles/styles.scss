@@ -1,12 +1,10 @@
-@import './utils/variables';
-@import './utils/mixins';
-
-
 @import './components/footer';
 @import './components/header';
 @import './components/main';
-@import './components/nav';
 @import './components/product';
 @import './components/productList';
+
+@import './utils/mixins';
+@import './utils/variables';
 
 @import './views/app'
