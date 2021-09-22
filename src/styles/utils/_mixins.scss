@@ -1,0 +1,10 @@
+@mixin centrado {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+@mixin buttons {
+    width: 70px;
+    background-color: blueviolet;
+}

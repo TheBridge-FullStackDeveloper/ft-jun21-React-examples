@@ -107,6 +107,7 @@ export class ProductList extends Component {
                         {this.paintProducts()}
                     </article>
                 </section>
+                
             </>
         )
     }
