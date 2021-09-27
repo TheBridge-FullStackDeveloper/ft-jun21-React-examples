@@ -10,6 +10,7 @@ class Nav extends Component {
         <li className="Header--nav-element"><Link to="/about">About</Link></li>
         <li className="Header--nav-element"><Link to="/staff">Staff</Link></li>
         <li className="Header--nav-element"><Link to="/contact">Contacto</Link></li>
+        <li className="Header--nav-element"><Link to="/login">Login</Link></li>
       </ul>
     </nav>);
   }

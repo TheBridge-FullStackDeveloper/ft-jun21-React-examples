@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Product from '../Product'
 import products from '../../data.js'
 
+import {userContext} from '../../context/userContext';
+
+
 export class ProductList extends Component {
 
     constructor(props) {
@@ -69,6 +72,13 @@ export class ProductList extends Component {
 
         return (
             <div className="product-list">
+
+                <userContext.Consumer>
+                {({user}) => 
+                user.name?<h1>Hola, {user.name}</h1>:""
+                }
+                </userContext.Consumer>
+
                 <h1>Añadir producto</h1>
                 <form onSubmit={this.addProduct} className="product-list-form">
                     
