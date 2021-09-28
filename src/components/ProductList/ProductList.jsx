@@ -39,6 +39,8 @@ export class ProductList extends Component {
             this.setState({ products: [...this.state.products, newProduct]})
         }
 
+        
+
     }
     removeAllProducts = () => {
         this.setState({data:{}})
