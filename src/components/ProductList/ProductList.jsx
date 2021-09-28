@@ -2,23 +2,23 @@ import React, { Component } from 'react'
 import Product from '../Product'
 import products from '../../data.js'
 
-import {userContext} from '../../context/userContext';
+import { userContext } from '../../context/userContext';
 
 
 export class ProductList extends Component {
 
     constructor(props) {
         super(props)
-    
+
         this.url = React.createRef(); // Referencia para URL
         this.texto = React.createRef();
 
         this.state = {
-             data:{},
-             "products": products // [{p1},{p2},{p3},{p4},{p5}]
+            data: {},
+            "products": products // [{p1},{p2},{p3},{p4},{p5}]
         }
     }
-    
+
     addProduct = (event) => {
         //const name = prompt("Introduce nombre")
         //const desc = prompt("introduce descripción")
@@ -33,30 +33,30 @@ export class ProductList extends Component {
         const url = this.url.current.value; // Leer el valor de la referencia URL
         alert(url)
 
-        if(name && desc && price && url){
-            const product = {name,desc,price,url}
-            this.setState({data:product})
+        if (name && desc && price && url) {
+            const product = { name, desc, price, url }
+            this.setState({ data: product })
 
             //Añadir producto al array
             const newProduct = product
-            this.setState({ products: [...this.state.products, newProduct]})
+            this.setState({ products: [...this.state.products, newProduct] })
         }
 
-        
+
 
     }
     removeAllProducts = () => {
-        this.setState({data:{}})
-        this.setState({products}) // Deja el estado inicial
+        this.setState({ data: {} })
+        this.setState({ products }) // Deja el estado inicial
     }
     removeProduct = (i) => {
-       const remainProducts = this.state.products.filter((product,j)=>j!==i);
-       this.setState({products:remainProducts})
+        const remainProducts = this.state.products.filter((product, j) => j !== i);
+        this.setState({ products: remainProducts })
     }
 
     paintProducts = () => {
         // [{p1},{p2},{p3},{p4},{p5}] --> this.state.products
-        return this.state.products.map((product,i)=><Product info={product} key={i} remove={()=>this.removeProduct(i)}/>)
+        return this.state.products.map((product, i) => <Product info={product} key={i} remove={() => this.removeProduct(i)} />)
     }
 
     handleChange = (event) => {
@@ -68,47 +68,45 @@ export class ProductList extends Component {
 
 
     render() {
-        const message = this.state.data.name?
-        <h3>Último producto añadido: {this.state.data.name}</h3>:
-        <h3>Bienvenido, añade algo</h3>
+
 
         return (
             <div className="product-list">
 
                 <userContext.Consumer>
-                {({user}) => 
-                user.name?<h1>Hola, {user.name}</h1>:""
-                }
+                    {({ user }) =>
+                        user.name ? <h1 className="product-list-h1">Hola, {user.name}</h1> : ""
+                    }
                 </userContext.Consumer>
 
                 <h1>Añadir producto</h1>
                 <form onSubmit={this.addProduct} className="product-list-form">
-                    
+
                     <label>
-                    Nombre:
+                        Nombre:
                     </label>
                     <input type="text" name="name" onChange={this.handleChange} />
-                    
+
                     <label>
-                    Descripción:
+                        Descripción:
                     </label>
-                    <input type="text" name="desc"/>
-                    
+                    <input type="text" name="desc" />
+
                     <label>
-                    Precio:
+                        Precio:
                     </label>
-                    <input type="number" name="price"/>
-                   
+                    <input type="number" name="price" />
+
                     <label>
-                    URL img:
+                        URL img:
                     </label>
-                    <input type="url" name="url" ref={this.url}/>
-                    
-                    <input type="submit" value="Submit" />
+                    <input type="url" name="url" ref={this.url} />
+
+                    <input type="submit" value="Añadir producto" />
                 </form>
 
                 <section className="product-list--list">
-                    <h1>Lista de productos</h1> 
+                    <h1>Lista de productos</h1>
                     <article className="product-list--article">
                         {this.paintProducts()}
                     </article>

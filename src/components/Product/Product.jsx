@@ -18,7 +18,7 @@ export class Product extends Component {
     }
 
     render() {
-        const { name, desc, price, url } = this.props.info
+        const { name, price, url } = this.props.info
         const empresa = this.state.empresa
         return (
             <section className="product">

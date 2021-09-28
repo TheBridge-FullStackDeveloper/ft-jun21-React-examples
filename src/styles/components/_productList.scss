@@ -3,6 +3,13 @@
 
 .product-list {
     @include text-align;
+    &-h1 {
+        font-style: italic;
+    }
+
+    & > h1 { 
+        padding-top: 10px;
+    }
     &-form{
         display: flex;
         flex-direction: column;
@@ -10,6 +17,9 @@
         align-content: center;
         align-items: center;
         justify-content: center;
+        & > input {
+            margin: 5px;
+        }
     }
     &--article{
         display: flex;
