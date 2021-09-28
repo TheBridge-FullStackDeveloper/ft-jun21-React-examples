@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import axios from 'axios';
+
 import PokemonsApi from "../PokemonsApi";
+
 
 class Staff extends Component {
   constructor(props) {
@@ -10,18 +13,14 @@ class Staff extends Component {
 }
 
 async componentDidMount(){
-        //Petición HTTP
-        // fetch('https://pokeapi.co/api/v2/pokemon')
-        //     .then(resp => resp.json())
-        //     .then(data => data)
-      
-          await new Promise(resolve => setTimeout(resolve, 5000));
-          const resp = await fetch('https://pokeapi.co/api/v2/pokemon');
-          const data = await resp.json();
+        //Petición HTTP      
+          await new Promise(resolve => setTimeout(resolve, 2000)); // simular retardo
+          const resp = await axios.get('https://pokeapi.co/api/v2/pokemon');
+          const data = await resp.data;
           this.setState({
               pokeLista: data.results
           })
-          console.log('componendfdfdtDidMount');
+          console.log('componentDidMount');
     }
 
   componentDidUpdate(prevProps, prevState){
