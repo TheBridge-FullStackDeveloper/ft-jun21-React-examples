@@ -1,53 +1,50 @@
 import './App.css';
+
+import React, { Component } from 'react'
+import {BrowserRouter} from 'react-router-dom';
+
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-
 import './styles/styles.scss'
 
-function App() {
-  return (
-    <div>
-      <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+import {userContext} from './context/userContext';
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <Main />
-          </Route>
-          <Route path="/users">
-            <Header />
-          </Route>
-          <Route path="/">
-            <Footer />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+export class App extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      user: {
+        name:""
+      }
+    }
+  }
+
+  login = (name) => this.setState({user:{name}})
+  
+  logout = () => this.setState({user:{name:""}})
+  
+
+  render() {
+    const value = {
+      user: this.state.user,
+      login: this.login,
+      logout: this.logout
+    }
+
+    return (
+      <div className="App">
+      <BrowserRouter>
+        <userContext.Provider value={value}>
+          <Header/>
+          <Main/>
+        </userContext.Provider>
+      </BrowserRouter>
+      <Footer/>
     </div>
-  );
+    )
+  }
 }
 
-export default App;
+export default App
