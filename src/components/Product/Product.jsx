@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react';
 import './Product.css'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -7,19 +7,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export class Product extends Component {
 
-    constructor(props) {
-        super(props)
+const Product = (props) => {
+    const [empresa, setEmpresa] = useState(props.info.empresa || "Vendehumo S.A")
 
-        this.state = {
-            empresa: this.props.info.empresa || "Vendehumo S.A"
-        }
-    }
-
-    render() {
-        const { name, price, url } = this.props.info
-        const empresa = this.state.empresa
+    const { name, price, url } = props.info
         return (
             <section className="product">
 
@@ -40,13 +32,14 @@ export class Product extends Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button onClick={this.props.remove}>Borrar</Button>
+                        <Button onClick={props.remove}>Borrar</Button>
                         <Button size="small">Learn More</Button>
                     </CardActions>
                 </Card>
             </section>
         )
-    }
+
 }
 
 export default Product
+
