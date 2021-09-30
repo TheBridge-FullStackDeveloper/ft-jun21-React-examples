@@ -9,6 +9,9 @@ import Main from './components/Main';
 import './styles/styles.scss'
 
 import {userContext} from './context/userContext';
+import { ThemeContext } from './context/themeContext'
+
+
 
 export class App extends Component {
   constructor(props) {
@@ -17,13 +20,16 @@ export class App extends Component {
     this.state = {
       user: {
         name:""
-      }
+      },
+      theme:""
     }
   }
 
   login = (name) => this.setState({user:{name}})
-  
+
   logout = () => this.setState({user:{name:""}})
+
+  toggleTheme = ()=> this.state.theme?console.log("modo dia"):console.log("modo noche")
   
 
   render() {
@@ -33,12 +39,19 @@ export class App extends Component {
       logout: this.logout
     }
 
+    const theme = {
+      theme: this.state.theme,
+      toggleTheme: this.toggleTheme
+    }
+
     return (
       <div className="App">
       <BrowserRouter>
         <userContext.Provider value={value}>
+        <ThemeContext.Provider value={theme}> 
           <Header/>
           <Main/>
+        </ThemeContext.Provider>
         </userContext.Provider>
       </BrowserRouter>
       <Footer/>
