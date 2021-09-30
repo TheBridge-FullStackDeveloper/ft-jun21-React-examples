@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 class Nav extends Component {
   render() {
+
     return (         
-    <nav className="nav">
+    <nav className={`nav ${this.props.theme}`}>
       <ul>
         <li className="nav-element"><Link to="/">Home</Link></li>
         <li className="nav-element"><Link to="/about">About</Link></li>

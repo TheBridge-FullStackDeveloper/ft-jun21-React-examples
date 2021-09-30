@@ -29,8 +29,11 @@ export class App extends Component {
 
   logout = () => this.setState({user:{name:""}})
 
-  toggleTheme = ()=> this.state.theme?console.log("modo dia"):console.log("modo noche")
-  
+  toggleTheme = () => {
+    this.setState({
+      theme: this.state.theme === "" ? "dark" : "",
+    });
+  };
 
   render() {
     const value = {
