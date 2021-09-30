@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Contact = () => {
+import useFetch from "../../hooks/fetch-hook";
+
+const Contact =  () => {
   
     const [pokemons, setPokemons] = useState([]);
 
-    useEffect(() => {
-        const getPokemons = async () =>{
-            const res = await axios.get('https://pokeapi.co/api/v2/pokemon');
-            setPokemons(res.data.results);
-        }
-        getPokemons();
-    }, []);
+    const {loading,result} = useFetch("https://pokeapi.co/api/v2/pokemon")
+
+    useEffect(()=>{
+      setPokemons(result.results)
+    }, [result])
+  
 
     return (
       <section>
         <h1>Contacto</h1>
         <ul>
-          {pokemons.map((pokemon, i)=>
+        {loading?<p>Cargando...</p>:pokemons.map((pokemon, i)=>
             <li key={i}>Trabajador: {pokemon.name}. URL contacto: {pokemon.url}</li>
         )}
+
         </ul>
       </section>
     )
