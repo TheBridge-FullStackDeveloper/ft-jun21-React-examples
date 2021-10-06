@@ -9,6 +9,7 @@ import Error from "../Error/Error";
 import Login from "../Login";
 import Donation from "../Donation";
 import Feed from "../Feed";
+import Rating from "../Rating";
 
 
 function Main() {
@@ -21,6 +22,7 @@ function Main() {
           <Route path="/contact" component={Contact} />
           <Route path="/donation" component={Donation} />
           <Route path="/feed" component={Feed} />
+          <Route path="/rating" component={Rating} />
           <Route path="/login" component={Login} />
           <Route component={Error} />
       </Switch>

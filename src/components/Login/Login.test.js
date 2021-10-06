@@ -1,10 +1,20 @@
 import React from "react";
-import { shallow } from "enzyme";
+import {render, screen} from '@testing-library/react'
 import Login from "./Login";
+import {userContext} from '../../context/userContext';
+
 
 describe("Login", () => {
+  const value = {
+    user: '',
+    login: (name) => this.user = name,
+    logout: () => this.user =''
+  }
   test("matches snapshot", () => {
-    const wrapper = shallow(<Login />);
-    expect(wrapper).toMatchSnapshot();
+    render(  
+    <userContext.Provider value={value}>
+        <Login />
+    </userContext.Provider>);
+    expect(screen).toMatchSnapshot();
   });
 });
